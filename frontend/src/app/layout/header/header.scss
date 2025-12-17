@@ -1,0 +1,120 @@
+.encabezado {
+  width: 100%;
+}
+
+
+.contenedor {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.barra-top {
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+}
+
+.barra-top__contenido {
+  position: relative;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+
+.barra-top__texto {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+  white-space: nowrap;
+  height: 17px;
+}
+
+
+.barra-top__acciones {
+  margin-left: auto;
+  display: flex;
+  gap: 22px;
+}
+
+.link-top {
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+}
+
+.link-top:hover {
+  text-decoration: underline;
+}
+
+
+.barra-main {
+  background: #d9d9d9;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.barra-main__contenido {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo__img {
+  height: 22px; 
+  width: auto;
+  display: block;
+}
+
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+}
+
+.nav__link {
+  color: #111;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+/* Botones negros derecha */
+.cta {
+   width: 197px;
+   height: 28px;
+  display: flex;
+  gap: 14px;
+}
+
+.btn-negro {
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 18px 18px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn-negro:hover {
+  filter: brightness(1.05);
+}

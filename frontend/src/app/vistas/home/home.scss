@@ -1,0 +1,45 @@
+.bloque {
+  margin: 4rem 0;
+}
+
+.hero {
+  height: 60vh;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.media-placeholder {
+  background: #aaa;
+  border-radius: 8px;
+  aspect-ratio: 16 / 9;
+}
+
+.grid-subastas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card-subasta {
+  background: #e0e0e0;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.cta-card {
+  background: #d5d5d5;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primario,
+.btn-secundario {
+  padding: .75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+}

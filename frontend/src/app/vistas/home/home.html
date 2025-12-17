@@ -1,0 +1,164 @@
+<!-- HERO PRINCIPAL -->
+<section class="hero">
+  <div class="hero-contenido">
+    <h1>
+      TITULAR PRINCIPAL
+      <span class="destacado">destacado</span>
+    </h1>
+
+    <p class="subtitulo">
+      Sub-texto con alguna info breve que explique rápidamente de qué va la plataforma.
+    </p>
+
+    <button class="btn-primario">Botón</button>
+  </div>
+</section>
+
+<!-- SUBASTA ACTIVA -->
+<section class="bloque">
+  <h2 class="titulo-seccion">SUBASTA ACTIVA · EN VIVO</h2>
+
+  <div class="subasta-activa">
+    <div class="media-placeholder"></div>
+
+    <div class="info-subasta">
+      <h3>Heladeras con elaboración máquinas chupetones</h3>
+      <p>
+        Alguna información relevante o introductoria para detallar en un
+        muy breve texto descriptivo.
+      </p>
+
+      <button class="btn-secundario">Unirse a la subasta</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMAS SUBASTAS -->
+<section class="bloque">
+  <h2 class="titulo-seccion">PRÓXIMAS SUBASTAS</h2>
+
+  <div class="grid-subastas">
+    @for (i of [1, 2, 3, 4]; track i) {
+      <div class="card-subasta">
+        <div class="media-placeholder"></div>
+
+        <h4>Heladeras con elaboración</h4>
+        <p>
+          Alguna información relevante o introductoria para detallar en un
+          muy breve texto descriptivo.
+        </p>
+
+        <div class="acciones">
+          <a [routerLink]="['/subastas', i]">Ver catálogo</a>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="acciones-centradas">
+    <button class="btn-primario">Ver más subastas</button>
+  </div>
+</section>
+
+<!-- QUIERO COMPRAR / QUIERO VENDER -->
+<section class="bloque grid-2">
+  <div class="cta-card">
+    <h3>QUIERO COMPRAR</h3>
+  </div>
+
+  <div class="cta-card">
+    <h3>QUIERO VENDER</h3>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="bloque quienes-somos">
+  <div class="texto">
+    <h2>QUIÉNES SOMOS</h2>
+    <p>
+      Hey! I’ve been thinking about this amazing spot I came across recently…
+      texto institucional de ejemplo que luego se reemplaza.
+    </p>
+
+    <button class="btn-secundario">Conocé más</button>
+  </div>
+
+  <div class="media-placeholder"></div>
+</section>
+
+<!-- SUBASTAS ANTERIORES -->
+<section class="bloque">
+  <h2 class="titulo-seccion">SUBASTAS ANTERIORES</h2>
+
+  <div class="grid-subastas">
+    @for (i of [1, 2, 3, 4]; track i) {
+      <div class="card-subasta vendida">
+        <span class="badge-vendida">LOTE VENDIDO</span>
+
+        <div class="media-placeholder"></div>
+
+        <h4>Heladeras con elaboración</h4>
+        <p>
+          Alguna información relevante o introductoria para detallar en un
+          muy breve texto descriptivo.
+        </p>
+      </div>
+    }
+  </div>
+
+  <div class="acciones-centradas">
+    <button class="btn-primario">Ver más subastas</button>
+  </div>
+</section>
+
+<!-- EMPRESAS QUE CONFÍAN -->
+<section class="bloque empresas">
+  <div class="logos-empresas">
+    @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+      <div class="logo-empresa"></div>
+    }
+  </div>
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section class="bloque faq">
+  <h2>PREGUNTAS FRECUENTES</h2>
+
+  <details>
+    <summary>¿Cuál es la que cual es el cual?</summary>
+    <p>
+      Respuesta que puede ser todo lo larga que quieras, se recomienda no más
+      de dos párrafos simples de leer.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Cuál es la que cual es el cual?</summary>
+    <p>
+      Respuesta que puede ser todo lo larga que quieras, se recomienda no más
+      de dos párrafos simples de leer.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Cuál es la que cual es el cual?</summary>
+    <p>
+      Respuesta que puede ser todo lo larga que quieras, se recomienda no más
+      de dos párrafos simples de leer.
+    </p>
+  </details>
+</section>
+
+<!-- CONTACTO -->
+<section class="bloque contacto">
+  <div class="form-contacto">
+    <h2>¿Querés vender? Contactanos</h2>
+
+    <input type="text" placeholder="Nombre" />
+    <textarea placeholder="Mensaje"></textarea>
+
+    <button class="btn-primario">Enviar</button>
+  </div>
+
+  <div class="media-placeholder"></div>
+</section>
