@@ -1,14 +1,17 @@
 .encabezado {
   width: 100%;
+  position: relative; /* referencia para posicionamiento absoluto central */
 }
 
-
-.contenedor {
-  max-width: 1180px;
+.contenedor-header {
+  width: 100%;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 32px;
+  box-sizing: border-box;
 }
 
+/* TOP */
 .barra-top {
   background: #111;
   color: #fff;
@@ -22,35 +25,39 @@
   align-items: center;
 }
 
-
 .barra-top__texto {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0.9;
   white-space: nowrap;
-  height: 17px;
 }
 
-
-.barra-top__acciones {
-  margin-left: auto;
-  display: flex;
-  gap: 22px;
+/* .barra-top__acciones absolute positioning removed to allow grid alignment (see bottom of file) */
+@media (max-width: 600px) {
+  /* En móvil volvemos al flujo normal para evitar solapamientos */
+  .barra-top__acciones {
+    position: static;
+    transform: none;
+    margin-left: auto;
+  }
 }
+
+/* Remove debug visuals */
+.barra-top__acciones { outline: none; background: transparent; }
 
 .link-top {
   color: #fff;
   text-decoration: none;
   letter-spacing: 0.4px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .link-top:hover {
   text-decoration: underline;
 }
 
-
+/* MAIN */
 .barra-main {
   background: #d9d9d9;
   border-bottom: 1px solid #bfbfbf;
@@ -63,7 +70,7 @@
   gap: 20px;
 }
 
-
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -71,12 +78,12 @@
 }
 
 .logo__img {
-  height: 22px; 
+  height: 22px;
   width: auto;
   display: block;
 }
 
-
+/* Nav centrado */
 .nav {
   flex: 1;
   display: flex;
@@ -94,21 +101,25 @@
   text-decoration: underline;
 }
 
-/* Botones negros derecha */
+/* CTA a la derecha (sin medidas fijas) */
 .cta {
-   width: 197px;
-   height: 28px;
   display: flex;
   gap: 14px;
+
+  margin-left: auto;     /* CLAVE: lo empuja a la derecha */
+  padding-left: 20px;    /* separa del nav */
 }
 
+/* Botones negros (padding coherente con altura 80px) */
 .btn-negro {
   background: #111;
   color: #fff;
   text-decoration: none;
   font-size: 18px;
-  padding: 18px 18px;
+
+  padding: 10px 18px;    /* antes 18px 18px (era gigante) */
   border-radius: 2px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -118,3 +129,105 @@
 .btn-negro:hover {
   filter: brightness(1.05);
 }
+
+/* Ajustes para que logo y CTA lleguen más a los extremos 🔧 */
+.barra-main {
+  position: relative;
+}
+
+/* Hacer que el contenedor de la barra principal ocupe todo el ancho y respetar el margen del wireframe */
+.barra-main > .contenedor-header {
+  max-width: none;
+  width: 100%;
+  padding-left: 80px;  /* wireframe: 80px */
+  padding-right: 80px; /* wireframe: 80px */
+
+  /* Usar grid para columnas: logo / nav / cta */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+/* Aplicar el mismo margen al top bar para alinear 'REGISTRARSE' e 'INICIAR SESIÓN' */
+.barra-top > .contenedor-header {
+  max-width: none;
+  width: 100%;
+  padding-left: 80px;  /* wireframe: 80px */
+  padding-right: 80px; /* wireframe: 80px */
+
+  /* Grid idéntico para mantener columnas alineadas */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+/* Mantener la barra interior en flex y usar posicionamiento para centrar la nav */
+.barra-main__contenido {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* empuja logo a la izquierda y cta a la derecha */
+  gap: 0;
+  position: relative; /* para que la nav absoluta se calcule respecto a este contenedor */
+}
+
+/* Colocar la navegación en la columna central del grid */
+.nav {
+  grid-column: 2;
+  justify-self: center;
+  display: flex;
+  gap: 34px;
+}
+
+/* Ajustes responsive para respetar márgenes del wireframe (80px desktop) */
+@media (max-width: 1024px) {
+  .barra-main > .contenedor-header,
+  .barra-top > .contenedor-header {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+@media (max-width: 768px) {
+  .barra-main > .contenedor-header,
+  .barra-top > .contenedor-header {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .barra-main > .contenedor-header,
+  .barra-top > .contenedor-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .nav {
+    display: none; /* evitar solapamientos en móvil; se puede sustituir por menú */
+  }
+}
+
+/* Ajustar padding de logo/cta a 0 para que la distancia real sea la del contenedor */
+.logo {
+  padding-left: 0;
+  grid-column: 1;
+}
+
+.cta {
+  padding-right: 0;
+  margin-left: 0; /* quitar auto si existiera */
+  grid-column: 3;
+  justify-self: end; /* colocarlo en la columna derecha */
+  display: flex;
+  gap: 14px;
+}
+
+/* Alinear los links de la barra superior en la misma columna (3) que el CTA */
+.barra-top__acciones {
+  grid-column: 3;
+  justify-self: end;
+  align-self: center;
+  position: static;
+  transform: none;
+  display: flex;
+  gap: 22px;
+}
+
