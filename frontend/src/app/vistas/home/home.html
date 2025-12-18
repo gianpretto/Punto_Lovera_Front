@@ -1,10 +1,10 @@
 <!-- HERO PRINCIPAL -->
 <section class="hero">
   <div class="hero-contenido">
-    <h1>
-      TITULAR PRINCIPAL     
-    </h1>
-    <h2 class="detalle">detalle</h2>
+    <div class="titulo-wrap">
+      <h1 class="titulo">TITULAR PRINCIPAL</h1>
+      <h2 class="detalle">detalle</h2>
+    </div>
 
     <p class="subtitulo">
       Sub-texto con alguna info breve que explique rápidamente de qué va la plataforma.
@@ -15,150 +15,231 @@
 </section>
 
 <!-- SUBASTA ACTIVA -->
-<section class="bloque">
-  <h2 class="titulo-seccion">SUBASTA ACTIVA · EN VIVO</h2>
+<section class="subasta-activa">
+  <div class="subasta-activa__inner">
+    <p class="subasta-activa__eyebrow">SUBASTA ACTIVA • EN VIVO</p>
 
-  <div class="subasta-activa">
-    <div class="media-placeholder"></div>
+    <article class="subasta-card">
+      <div class="subasta-card__media">
+        <span class="pill pill--activa"> ACTIVA</span>
+        <span class="subasta-card__en-vivo">• EN VIVO</span>
 
-    <div class="info-subasta">
-      <h3>Heladeras con elaboración máquinas chupetones</h3>
-      <p>
-        Alguna información relevante o introductoria para detallar en un
-        muy breve texto descriptivo.
-      </p>
+        <div class="subasta-card__placeholder" aria-hidden="true">
+          <span class="ph-icon"></span>
+        </div>
+      </div>
 
-      <button class="btn-secundario">Unirse a la subasta</button>
-    </div>
+      <div class="subasta-card__info">
+        <h3 class="subasta-card__titulo">Heladería con elaboración<br>máquinas chupetonas</h3>
+
+        <div class="subasta-card__ubicacion">
+          <span class="pin"></span>
+          <span>Castelar, Buenos Aires.</span>
+        </div>
+
+        <hr class="subasta-card__divider">
+
+        <p class="subasta-card__desc">
+          Alguna información relevante o interesante para detallar en un muy breve texto descriptivo,
+          que no dure más que esto.
+        </p>
+
+        <button class="btn-negro">Unirse a la sesión →</button>
+      </div>
+    </article>
   </div>
 </section>
 
 <!-- PRÓXIMAS SUBASTAS -->
-<section class="bloque">
-  <h2 class="titulo-seccion">PRÓXIMAS SUBASTAS</h2>
+<section class="prox">
+  <div class="prox__inner">
+    <h2 class="prox__titulo">PRÓXIMAS SUBASTAS</h2>
 
-  <div class="grid-subastas">
-    @for (i of [1, 2, 3, 4]; track i) {
-      <div class="card-subasta">
-        <div class="media-placeholder"></div>
+    <div class="prox__grid">
+      <article class="sub-card" *ngFor="let subasta of proximasSubastas">
+        
+        <div class="sub-card__media">
+          <span 
+            class="pill"
+            [ngClass]="{
+              'pill--activa': subasta.estado === 'ACTIVA'
+            }">
+            {{ subasta.estado }}
+          </span>
 
-        <h4>Heladeras con elaboración</h4>
-        <p>
-          Alguna información relevante o introductoria para detallar en un
-          muy breve texto descriptivo.
-        </p>
+          <div class="sub-card__ph"></div>
 
-        <div class="acciones">
-          <a [routerLink]="['/subastas', i]">Ver catálogo</a>
+          <div class="countdown">
+            <div class="countdown__row">
+              <span>{{ subasta.countdown.d }}</span> :
+              <span>{{ subasta.countdown.h }}</span> :
+              <span>{{ subasta.countdown.m }}</span> :
+              <span>{{ subasta.countdown.s }}</span>
+            </div>
+
+            <div class="countdown__labels">
+              <span>D</span><span>H</span><span>M</span><span>S</span>
+            </div>
+          </div>
         </div>
-      </div>
-    }
-  </div>
 
-  <div class="acciones-centradas">
-    <button class="btn-primario">Ver más subastas</button>
+        <div class="sub-card__body">
+          <h3 class="sub-card__titulo">{{ subasta.titulo }}</h3>
+          <p class="sub-card__loc">📍 {{ subasta.ubicacion }}</p>
+
+          <p class="sub-card__desc">
+            {{ subasta.descripcion }}
+          </p>
+
+          <div class="sub-card__footer">
+            <span>📅 {{ subasta.fecha }}</span>
+            <span>🕒 {{ subasta.hora }}</span>
+          </div>
+        </div>
+
+      </article>
+    </div>
+
+    <div class="prox__cta">
+      <button class="btn-negro">Ver más subastas →</button>
+    </div>
   </div>
 </section>
+
+
 
 <!-- QUIERO COMPRAR / QUIERO VENDER -->
-<section class="bloque grid-2">
-  <div class="cta-card">
-    <h3>QUIERO COMPRAR</h3>
-  </div>
+<section class="cta-doble">
+  <div class="cta-doble__inner">
+    <a class="cta-card" href="#" aria-label="Quiero comprar">
+      <h3 class="cta-card__titulo">QUIERO COMPRAR</h3>
+      <div class="cta-card__img" aria-hidden="true"></div>
+    </a>
 
-  <div class="cta-card">
-    <h3>QUIERO VENDER</h3>
+    <a class="cta-card" href="#" aria-label="Quiero vender">
+      <h3 class="cta-card__titulo">QUIERO VENDER</h3>
+      <div class="cta-card__img" aria-hidden="true"></div>
+    </a>
   </div>
 </section>
+
 
 <!-- QUIÉNES SOMOS -->
-<section class="bloque quienes-somos">
-  <div class="texto">
-    <h2>QUIÉNES SOMOS</h2>
-    <p>
-      Hey! I’ve been thinking about this amazing spot I came across recently…
-      texto institucional de ejemplo que luego se reemplaza.
-    </p>
+<section class="qs">
+  <div class="qs__inner">
+    <div class="qs__texto">
+      <h2 class="qs__titulo">QUIENES SOMOS</h2>
 
-    <button class="btn-secundario">Conocé más</button>
+      <p class="qs__desc">
+        Hey! I've been thinking about this amazing spot I came across recently—it's got such a warm,
+        welcoming atmosphere, and the food is just next-level. It's one of those places where you can
+        really take your time, savor each bite, and just relax. We should definitely go check it out
+        together sometime soon. What do you think? Let's plan a visit!
+      </p>
+
+      <button class="btn-negro">Conocé más →</button>
+    </div>
+
+    <div class="qs__media" aria-hidden="true">
+      <div class="qs__img"></div>
+    </div>
   </div>
-
-  <div class="media-placeholder"></div>
 </section>
+
 
 <!-- SUBASTAS ANTERIORES -->
-<section class="bloque">
-  <h2 class="titulo-seccion">SUBASTAS ANTERIORES</h2>
+<section class="prox ant">
+  <div class="prox__inner">
+    <h2 class="prox__titulo">SUBASTAS ANTERIORES</h2>
 
-  <div class="grid-subastas">
-    @for (i of [1, 2, 3, 4]; track i) {
-      <div class="card-subasta vendida">
-        <span class="badge-vendida">LOTE VENDIDO</span>
+    <div class="prox__grid">
+      <article class="sub-card sub-card--anterior" *ngFor="let item of subastasAnteriores">
+        <div class="sub-card__media">
+          <div class="sub-card__ph"></div>
 
-        <div class="media-placeholder"></div>
+          <div class="sold-badge">LOTE VENDIDO</div>
+        </div>
 
-        <h4>Heladeras con elaboración</h4>
-        <p>
-          Alguna información relevante o introductoria para detallar en un
-          muy breve texto descriptivo.
-        </p>
+        <div class="sub-card__body">
+          <h3 class="sub-card__titulo">{{ item.titulo }}</h3>
+          <p class="sub-card__loc">📍 {{ item.ubicacion }}</p>
+
+          <p class="sub-card__desc">{{ item.descripcion }}</p>
+
+          <div class="sub-card__footer">
+            <span>📅 {{ item.fecha }}</span>
+            <span>🕒 {{ item.hora }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="prox__cta">
+      <button class="btn-negro">Ver más subastas →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONFÍAN EN NOSOTROS-->
+<section class="trust">
+  <div class="trust__inner">
+    <p class="trust__titulo">CONFÍAN EN NOSOTROS</p>
+
+    <div class="trust__logos">
+      <div class="trust__logo" *ngFor="let l of logos">
+        <img [src]="l.src" [alt]="l.alt" />
       </div>
-    }
-  </div>
-
-  <div class="acciones-centradas">
-    <button class="btn-primario">Ver más subastas</button>
+    </div>
   </div>
 </section>
 
-<!-- EMPRESAS QUE CONFÍAN -->
-<section class="bloque empresas">
-  <div class="logos-empresas">
-    @for (i of [1, 2, 3, 4, 5, 6]; track i) {
-      <div class="logo-empresa"></div>
-    }
-  </div>
-</section>
 
 <!-- PREGUNTAS FRECUENTES -->
-<section class="bloque faq">
-  <h2>PREGUNTAS FRECUENTES</h2>
+<section class="faq">
+  <div class="faq__inner">
+    <h2 class="faq__titulo">PREGUNTAS FRECUENTES</h2>
 
-  <details>
-    <summary>¿Cuál es la que cual es el cual?</summary>
-    <p>
-      Respuesta que puede ser todo lo larga que quieras, se recomienda no más
-      de dos párrafos simples de leer.
-    </p>
-  </details>
+    <div class="faq__lista">
+      <div
+        class="faq__item"
+        *ngFor="let f of faqs; let i = index"
+        [class.activa]="f.abierta"
+      >
+        <button class="faq__pregunta" (click)="toggleFaq(i)">
+          <span>{{ i + 1 }}. {{ f.pregunta }}</span>
+          <span class="faq__icono">+</span>
+        </button>
 
-  <details>
-    <summary>¿Cuál es la que cual es el cual?</summary>
-    <p>
-      Respuesta que puede ser todo lo larga que quieras, se recomienda no más
-      de dos párrafos simples de leer.
-    </p>
-  </details>
-
-  <details>
-    <summary>¿Cuál es la que cual es el cual?</summary>
-    <p>
-      Respuesta que puede ser todo lo larga que quieras, se recomienda no más
-      de dos párrafos simples de leer.
-    </p>
-  </details>
+        <div class="faq__respuesta" *ngIf="f.abierta">
+          <p>{{ f.respuesta }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 <!-- CONTACTO -->
-<section class="bloque contacto">
-  <div class="form-contacto">
-    <h2>¿Querés vender? Contactanos</h2>
+<section class="contacto">
+  <div class="contacto__inner">
+    <div class="contacto__panel">
+      <div class="contacto__eyebrow"> 
+          <h2 class="contacto__titulo">¿QUERÉS VENDER? CONTACTANOS</h2>
 
-    <input type="text" placeholder="Nombre" />
-    <textarea placeholder="Mensaje"></textarea>
+          <form class="contacto__form" (submit)="$event.preventDefault()">
+            <input class="contacto__input" type="text" placeholder="Nombre" />
 
-    <button class="btn-primario">Enviar</button>
+            <textarea class="contacto__textarea" rows="8" placeholder="Mensaje..."></textarea>
+
+            <button class="btn-negro btn-negro--full" type="submit">Enviar →</button>
+          </form>
+      </div>
+    </div>
+
+    <div class="contacto__media" aria-hidden="true">
+      <div class="contacto__img"></div>
+    </div>
   </div>
-
-  <div class="media-placeholder"></div>
 </section>
+
