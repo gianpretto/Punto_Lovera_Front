@@ -1,7 +1,101 @@
+/*CONTACTO*/
+.contacto{
+  margin-top: 140px;
+  background: #fff;
+}
+
+.contacto__inner{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+/* Panel izquierdo */
+.contacto__panel{
+  background: #4e4a4a;
+  padding: 110px 100px 110px 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.contacto__eyebrow{
+  margin-left: 100px;
+}
+.contacto__titulo{
+  margin: 0 0 60px;
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: 1px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.contacto__form{
+  display: grid;
+  gap: 18px;
+  max-width: 520px;
+}
+
+.contacto__input,
+.contacto__textarea{
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.7);
+  color: #fff;
+  padding: 16px 18px;
+  font-size: 18px;
+  outline: none;
+}
+
+.contacto__textarea{
+  resize: none;
+  padding-top: 18px;
+}
+
+.contacto__input::placeholder,
+.contacto__textarea::placeholder{
+  color: rgba(255,255,255,.85);
+}
+
+.btn-negro--full{
+  width: 107.5%;
+  min-height: 54px;
+}
+
+/* Panel derecho */
+.contacto__media{
+  background: #8f8f8f;
+  position: relative;
+}
+
+.contacto__img{
+  position: absolute;
+  inset: 0;
+  opacity: .55;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,.35) 0 46px, transparent 47px),
+    linear-gradient(135deg, rgba(0,0,0,.16), rgba(0,0,0,.02));
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .contacto__inner{
+    grid-template-columns: 1fr;
+  }
+  .contacto__panel{
+    padding: 70px 26px;
+  }
+  .contacto__media{
+    min-height: 260px;
+  }
+}
 .footer{
   background: #111;
   color: #fff;
 }
+
 
 .footer__inner{
   width: min(1240px, calc(100% - 64px));
@@ -19,6 +113,7 @@
     justify-content: start;
     gap: 18px;
 }
+
 .footer__logo img{
   height: 22px;
   width: auto;
@@ -110,6 +205,21 @@
   text-align: center;
   padding: 14px 0;
   font-size: 12px;
+}
+
+.btn-negro {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 12px 80px;
+  border-radius: 0;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.35);
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 2.5rem;
+}
+.btn-negro:hover {
+  filter: brightness(1.05);
 }
 
 /* Responsive */

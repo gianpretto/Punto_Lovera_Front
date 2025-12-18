@@ -1,4 +1,26 @@
 <footer class="footer">
+   <!-- CONTACTO -->
+<section class="contacto">
+  <div class="contacto__inner">
+    <div class="contacto__panel">
+      <div class="contacto__eyebrow"> 
+          <h2 class="contacto__titulo">¿QUERÉS VENDER? CONTACTANOS</h2>
+
+          <form class="contacto__form" (submit)="$event.preventDefault()">
+            <input class="contacto__input" type="text" placeholder="Nombre" />
+
+            <textarea class="contacto__textarea" rows="8" placeholder="Mensaje..."></textarea>
+
+            <button class="btn-negro btn-negro--full" type="submit">Enviar →</button>
+          </form>
+      </div>
+    </div>
+
+    <div class="contacto__media" aria-hidden="true">
+      <div class="contacto__img"></div>
+    </div>
+  </div>
+</section> 
   <div class="footer__inner">
     <!--  Marca + ubicación -->
     <div class="footer__col footer__brand">
