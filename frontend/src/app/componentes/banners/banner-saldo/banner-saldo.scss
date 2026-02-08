@@ -1,0 +1,51 @@
+.banner-saldo-container {
+    background-color: #3C6466;
+    border-radius: 50px;
+    /* Increased radius */
+    padding: 70px 40px;
+    /* Increased padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    width: 100%;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+
+    .label {
+        font-size: 1.3rem;
+        /* Slightly larger */
+        font-weight: 400;
+        opacity: 0.9;
+    }
+
+    .saldo {
+        font-size: 3.5rem;
+        /* Larger amount */
+        font-weight: 500;
+        margin: 10px 0;
+    }
+
+    .cargar-btn {
+        margin-top: 15px;
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        /* Larger button */
+        border-radius: 5px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.2s;
+
+        &:hover {
+            transform: scale(1.05);
+            background-color: #222;
+        }
+    }
+}

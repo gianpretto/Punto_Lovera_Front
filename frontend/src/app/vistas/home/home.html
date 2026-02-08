@@ -1,18 +1,12 @@
 <!-- HERO PRINCIPAL -->
-<section class="hero">
-  <div class="hero-contenido">
-    <div class="titulo-wrap">
-      <h1 class="titulo">TITULAR PRINCIPAL</h1>
-      <h2 class="detalle">detalle</h2>
-    </div>
-
-    <p class="subtitulo">
-      Sub-texto con alguna info breve que explique rápidamente de qué va la plataforma.
-    </p>
-
-    <button class="btn-primario">Botón</button>
-  </div>
-</section>
+<app-hero
+  titulo="TITULAR PRINCIPAL"
+  detalle="detalle"
+  subtitulo="Sub-texto con alguna info breve que explique rápidamente de qué va la plataforma."
+  textoBoton="Botón"
+  [linkBoton]="['/subastas']"
+  imagenUrl="/images/hero-placeholder.jpg"
+></app-hero>
 
 <!-- SUBASTA ACTIVA -->
 <section class="subasta-activa">
@@ -56,49 +50,18 @@
     <h2 class="prox__titulo">PRÓXIMAS SUBASTAS</h2>
 
     <div class="prox__grid">
-      <article class="sub-card" *ngFor="let subasta of proximasSubastas">
-        
-        <div class="sub-card__media">
-          <span 
-            class="pill"
-            [ngClass]="{
-              'pill--activa': subasta.estado === 'ACTIVA'
-            }">
-            {{ subasta.estado }}
-          </span>
-
-          <div class="sub-card__ph"></div>
-
-          <div class="countdown">
-            <div class="countdown__row">
-              <span>{{ subasta.countdown.d }}</span> :
-              <span>{{ subasta.countdown.h }}</span> :
-              <span>{{ subasta.countdown.m }}</span> :
-              <span>{{ subasta.countdown.s }}</span>
-            </div>
-
-            <div class="countdown__labels">
-              <span>D</span><span>H</span><span>M</span><span>S</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sub-card__body">
-          <h3 class="sub-card__titulo">{{ subasta.titulo }}</h3>
-          <p class="sub-card__loc">📍 {{ subasta.ubicacion }}</p>
-
-          <p class="sub-card__desc">
-            {{ subasta.descripcion }}
-          </p>
-
-          <div class="sub-card__footer">
-            <span>📅 {{ subasta.fecha }}</span>
-            <span>🕒 {{ subasta.hora }}</span>
-          </div>
-        </div>
-
-      </article>
-    </div>
+      <app-tarjeta-subasta
+        *ngFor="let subasta of proximasSubastas"
+        [estado]="subasta.estado"
+        [titulo]="subasta.titulo"
+        [ubicacion]="subasta.ubicacion"
+        [descripcion]="subasta.descripcion"
+        [fecha]="subasta.fecha"
+        [hora]="subasta.hora"
+        [mostrarCuentaRegresiva]="true"
+        [countdown]="subasta.countdown">
+      </app-tarjeta-subasta>
+    </div> 
 
     <div class="prox__cta">
       <button class="btn-negro">Ver más subastas →</button>
@@ -153,25 +116,16 @@
     <h2 class="prox__titulo">SUBASTAS ANTERIORES</h2>
 
     <div class="prox__grid">
-      <article class="sub-card sub-card--anterior" *ngFor="let item of subastasAnteriores">
-        <div class="sub-card__media">
-          <div class="sub-card__ph"></div>
-
-          <div class="sold-badge">LOTE VENDIDO</div>
-        </div>
-
-        <div class="sub-card__body">
-          <h3 class="sub-card__titulo">{{ item.titulo }}</h3>
-          <p class="sub-card__loc">📍 {{ item.ubicacion }}</p>
-
-          <p class="sub-card__desc">{{ item.descripcion }}</p>
-
-          <div class="sub-card__footer">
-            <span>📅 {{ item.fecha }}</span>
-            <span>🕒 {{ item.hora }}</span>
-          </div>
-        </div>
-      </article>
+      <app-tarjeta-subasta
+        *ngFor="let item of subastasAnteriores"
+        [estado]="'FINALIZADA'"
+        [titulo]="item.titulo"
+        [ubicacion]="item.ubicacion"
+        [descripcion]="item.descripcion"
+        [fecha]="item.fecha"
+        [hora]="item.hora"
+        [mostrarCuentaRegresiva]="false">
+      </app-tarjeta-subasta>
     </div>
 
     <div class="prox__cta">
