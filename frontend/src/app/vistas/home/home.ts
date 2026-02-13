@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Hero } from '../../componentes/secciones/hero/hero';
 import { TarjetaSubasta } from '../../componentes/tarjetas/tarjeta-subasta/tarjeta-subasta';
 import { SubastaEnVivo } from '../../componentes/secciones/subasta-en-vivo/subasta-en-vivo';
-import { Redes } from '../../componentes/secciones/redes/redes';
 import { SubastasAnteriores } from '../../componentes/secciones/subastas-anteriores/subastas-anteriores';
 
 
@@ -14,7 +13,7 @@ import { Subasta, makeCountdown } from '../../interfaces/subasta.interface';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, NgClass, NgFor, NgIf, Hero, TarjetaSubasta, SubastaEnVivo, Redes, SubastasAnteriores],
+  imports: [RouterLink, NgFor, NgIf, Hero, TarjetaSubasta, SubastaEnVivo, SubastasAnteriores],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { NgClass, NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
 import { SubastaEnVivo } from '../../componentes/secciones/subasta-en-vivo/subasta-en-vivo';
 import { TarjetaSubasta } from '../../componentes/tarjetas/tarjeta-subasta/tarjeta-subasta';
 import { Redes } from '../../componentes/secciones/redes/redes';
@@ -10,7 +9,7 @@ import { Subasta, makeCountdown } from '../../interfaces/subasta.interface';
 @Component({
   selector: 'app-proximas-subastas',
   standalone: true,
-  imports: [NgClass, NgFor, NgIf, SubastaEnVivo, TarjetaSubasta, Redes, SubastasAnteriores, RouterLink],
+  imports: [NgFor, NgIf, SubastaEnVivo, TarjetaSubasta, Redes, SubastasAnteriores],
   templateUrl: './proximas-subastas.html',
   styleUrl: './proximas-subastas.scss',
 })

@@ -1,13 +1,13 @@
 
 import { Component } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { TarjetaSubasta } from '../../tarjetas/tarjeta-subasta/tarjeta-subasta';
 import { Subasta } from '../../../interfaces/subasta.interface';
 
 @Component({
     selector: 'app-subastas-anteriores',
     standalone: true,
-    imports: [NgFor, NgIf, TarjetaSubasta],
+    imports: [NgFor, TarjetaSubasta],
     templateUrl: './subastas-anteriores.html',
     styleUrl: './subastas-anteriores.scss'
 })
