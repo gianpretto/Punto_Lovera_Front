@@ -1,1 +1,37 @@
-<p>subasta-en-vivo works!</p>
+<section class="subasta-envivo-section">
+    <div class="header-section">
+        <span class="titulo">SUBASTA ACTIVA • <span class="highlight">EN VIVO</span></span>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Left Side: Video/Stream Placeholder -->
+        <div class="video-container">
+            <!-- Background Image taking full space -->
+            <img src="assets/img/default.png" alt="Subasta en vivo" class="video-bg">
+
+            <div class="status-badge">
+                <span class="text">ACTIVA</span>
+            </div>
+            <div class="live-indicator">
+                • EN VIVO
+            </div>
+        </div>
+
+        <!-- Right Side: Info Panel -->
+        <div class="info-container">
+            <h2 class="subasta-titulo">Heladería con elaboración<br>máquinas chupetonas</h2>
+            <p class="ubicacion">Castelar, Buenos Aires.</p>
+
+            <div class="divider"></div>
+
+            <p class="descripcion">
+                Alguna información relevante o interesante para detallar en un muy breve texto descriptivo, que no dure
+                más que esto.
+            </p>
+
+            <button class="btn-unirse" [routerLink]="['/subastas', '1', 'activa']">
+                Unirse a la sesión <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+</section>

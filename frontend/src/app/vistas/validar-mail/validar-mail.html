@@ -1,0 +1,24 @@
+<div class="validar-wrapper">
+    <div class="validar-content">
+        <h1 class="validar-title">VALIDAR EMAIL</h1>
+
+        <div class="validar-icon">
+            ✉️
+        </div>
+
+        <p class="validar-desc">
+            Te hemos enviado un correo electrónico para confirmar tu cuenta. Por favor, revisá tu bandeja de entrada y
+            seguí las instrucciones que allí se indican.
+        </p>
+
+        <p class="validar-info">
+            Si no lo encontrás, revisá tu carpeta de spam.
+        </p>
+
+        <div class="form-actions">
+            <!-- Reuse or mock resend action -->
+            <button type="button" class="btn btn-black" (click)="resendEmail()">Reenviar correo</button>
+            <a routerLink="/login" class="btn btn-link">Volver al inicio de sesión</a>
+        </div>
+    </div>
+</div>

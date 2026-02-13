@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgClass, NgFor,NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Hero } from '../../componentes/secciones/hero/hero';
 import { TarjetaSubasta } from '../../componentes/tarjetas/tarjeta-subasta/tarjeta-subasta';
+import { SubastaEnVivo } from '../../componentes/secciones/subasta-en-vivo/subasta-en-vivo';
+import { Redes } from '../../componentes/secciones/redes/redes';
+import { SubastasAnteriores } from '../../componentes/secciones/subastas-anteriores/subastas-anteriores';
 
 
 import { Subasta, makeCountdown } from '../../interfaces/subasta.interface';
@@ -11,7 +14,7 @@ import { Subasta, makeCountdown } from '../../interfaces/subasta.interface';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, NgClass, NgFor, NgIf, Hero, TarjetaSubasta],
+  imports: [RouterLink, NgClass, NgFor, NgIf, Hero, TarjetaSubasta, SubastaEnVivo, Redes, SubastasAnteriores],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -19,6 +22,7 @@ export class Home {
 
   proximasSubastas: Subasta[] = [
     {
+      id: 1,
       estado: 'ACTIVA',
       titulo: 'Heladería con elaboración',
       ubicacion: 'Castelar, Buenos Aires',
@@ -28,6 +32,7 @@ export class Home {
       countdown: makeCountdown(0, 5, 48, 9)
     },
     {
+      id: 2,
       estado: 'PRÓXIMA',
       titulo: 'Lote de maquinaria',
       ubicacion: 'San Isidro, Buenos Aires',
@@ -37,6 +42,7 @@ export class Home {
       countdown: makeCountdown(2, 12, 0, 0)
     },
     {
+      id: 3,
       estado: 'PRÓXIMA',
       titulo: 'Negocio gastronómico',
       ubicacion: 'Morón, Buenos Aires',
@@ -46,6 +52,7 @@ export class Home {
       countdown: makeCountdown(10, 4, 30, 0)
     },
     {
+      id: 4,
       estado: 'PRÓXIMA',
       titulo: 'Tienda de diseño',
       ubicacion: 'Palermo, Buenos Aires',

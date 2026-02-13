@@ -5,8 +5,14 @@
       <div class="barra-top__texto">Novedades asd asd asd</div>
 
       <div class="barra-top__acciones">
-        <a class="link-top" routerLink="/registro">REGISTRARSE</a>
-        <a class="link-top" routerLink="/login">INICIAR SESIÓN</a>
+        <ng-container *ngIf="currentUser$ | async as user; else guestTemplate">
+          <a class="link-top welcome-msg" routerLink="/perfil">Bienvenido, <strong>{{ user }}</strong></a>
+          <button class="link-top btn-logout" (click)="logout()">SALIR</button>
+        </ng-container>
+        <ng-template #guestTemplate>
+          <a class="link-top" routerLink="/registro">REGISTRARSE</a>
+          <a class="link-top" routerLink="/login">INICIAR SESIÓN</a>
+        </ng-template>
       </div>
     </div>
   </div>
@@ -14,8 +20,15 @@
   <!-- Barra principal -->
   <div class="barra-main">
     <div class="contenedor-header barra-main__contenido">
+      <!-- Hamburger button (mobile only) -->
+      <button class="hamburger-btn" (click)="toggleMobileMenu()" [class.active]="mobileMenuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <!-- Logo -->
-      <a class="logo" routerLink="/" >
+      <a class="logo" routerLink="/">
         <img class="logo__img" src="/assets/img/logo.svg" alt="Punto Lovera" />
       </a>
 
@@ -30,6 +43,40 @@
       <div class="cta">
         <a class="btn-negro" routerLink="/quiero-comprar">Quiero comprar</a>
         <a class="btn-negro" routerLink="/quiero-vender">Quiero vender</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" [class.active]="mobileMenuOpen" (click)="closeMobileMenu()">
+    <div class="mobile-menu" (click)="$event.stopPropagation()">
+      <nav class="mobile-nav">
+        <a class="mobile-nav__link" routerLink="/subastas" (click)="closeMobileMenu()">Próximas subastas</a>
+        <a class="mobile-nav__link" routerLink="/quienes-somos" (click)="closeMobileMenu()">Quiénes somos</a>
+        <a class="mobile-nav__link" routerLink="/contactanos" (click)="closeMobileMenu()">Contactános</a>
+      </nav>
+
+      <div class="mobile-cta">
+        <!-- Main Actions -->
+        <a class="btn-negro" routerLink="/quiero-comprar" (click)="closeMobileMenu()">Quiero comprar</a>
+        <a class="btn-negro" routerLink="/quiero-vender" (click)="closeMobileMenu()">Quiero vender</a>
+
+        <!-- Auth Section (Inside CTA container as requested) -->
+        <div class="mobile-auth-section">
+          <ng-container *ngIf="currentUser$ | async as user; else mobileGuestTemplate">
+            <a class="welcome-msg-mobile" routerLink="/perfil" (click)="closeMobileMenu()">
+              Bienvenido, <strong>{{ user }}</strong>
+            </a>
+            <button class="btn-logout-mobile" (click)="logout(); closeMobileMenu()">SALIR</button>
+          </ng-container>
+          <ng-template #mobileGuestTemplate>
+            <div class="guest-actions">
+              <a class="mobile-auth__link" routerLink="/registro" (click)="closeMobileMenu()">REGISTRARSE</a>
+              <span class="separator">|</span>
+              <a class="mobile-auth__link" routerLink="/login" (click)="closeMobileMenu()">INICIAR SESIÓN</a>
+            </div>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>

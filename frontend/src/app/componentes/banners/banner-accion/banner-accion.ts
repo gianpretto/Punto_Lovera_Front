@@ -13,9 +13,9 @@ export class BannerAccion {
   @Input() type: 'quiero-comprar' | 'quiero-vender' = 'quiero-comprar';
 
   get title(): string {
-    return this.type === 'quiero-comprar' 
-      ? 'REGISTRATE Y EMPEZA A PARTICIPAR' 
-      : 'CONTACTATE Y EMPEZA A VENDER';
+    return this.type === 'quiero-comprar'
+      ? 'REGISTRATE Y EMPEZA A PARTICIPAR'
+      : 'REGISTRATE Y EMPEZA A VENDER';
   }
 
   get buttonText(): string {

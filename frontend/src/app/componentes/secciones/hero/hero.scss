@@ -21,24 +21,24 @@
 }
 
 .titulo {
-    font-size: 90px; 
-    line-height: 1; 
-    margin: 0; 
-    font-family: 'Playfair Display', serif; 
-    font-weight: 50; 
-    line-height: 0.85; 
-    color: #2E2D2B; 
-    text-transform: uppercase;
+  font-size: 90px;
+  line-height: 1;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 50;
+  line-height: 0.85;
+  color: #2E2D2B;
+  text-transform: uppercase;
 }
 
 .detalle {
-font-size: 75px;
+  font-size: 75px;
   line-height: 1;
   margin: 0;
-  margin-top: -20px;   
+  margin-top: -20px;
   font-family: 'WindSong', cursive;
   font-weight: 400;
-  color: #3e6d72; 
+  color: #3e6d72;
 }
 
 .hero .subtitulo {
@@ -48,6 +48,8 @@ font-size: 75px;
   font-size: 26px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
+  padding: 0 20px;
+  /* Add padding for mobile text wrapping */
 }
 
 .btn-primario {
@@ -67,4 +69,45 @@ font-size: 75px;
 
 .btn-primario:hover {
   filter: brightness(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 600px;
+    /* Specific height for mobile */
+  }
+
+  .titulo {
+    font-size: 48px;
+    /* Reduce title size */
+  }
+
+  .detalle {
+    font-size: 42px;
+    /* Reduce detail size */
+    margin-top: -10px;
+  }
+
+  .hero .subtitulo {
+    font-size: 18px;
+    /* Reduce subtitle size */
+    margin: 1.5rem auto 1.5rem;
+    padding: 0 16px;
+  }
+
+  .btn-primario {
+    padding: 12px 40px;
+    /* Reduce button padding */
+    width: 80%;
+    /* Make button wider on mobile */
+    max-width: 300px;
+    font-size: 16px;
+  }
+
+  .hero-contenido {
+    transform: translateY(0);
+    /* Remove offset on mobile */
+    padding: 0 16px;
+  }
 }

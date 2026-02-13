@@ -1,1 +1,51 @@
-<p>tarjeta-producto-catalogo works!</p>
+<div class="tarjeta-catalogo">
+    <article class="cat-card">
+        <div class="cat-card__media" (click)="openLightbox()">
+            <div class="image-wrapper">
+                <img [src]="imagenes && imagenes.length ? imagenes[currentIndex] : 'assets/img/default.png'"
+                    [alt]="titulo">
+            </div>
+
+            <!-- Arrows (only if more than 1 image) -->
+            <div class="arrows" *ngIf="imagenes && imagenes.length > 1">
+                <button class="arrow arrow--left" (click)="prevImage($event)">&lt;</button>
+                <button class="arrow arrow--right" (click)="nextImage($event)">&gt;</button>
+            </div>
+
+            <!-- Dots/Index Indicator -->
+            <div class="dots" *ngIf="imagenes && imagenes.length > 1">
+                <span *ngFor="let img of imagenes; let i = index" class="dot"
+                    [ngClass]="{'active': i === currentIndex}"></span>
+            </div>
+        </div>
+
+        <div class="cat-card__body">
+            <div class="lote-badge">LOTE {{ lote }}:</div>
+            <h3 class="cat-card__titulo" [title]="titulo">{{ titulo }}</h3>
+            <p class="cat-card__desc" [title]="descripcion">
+                {{ descripcion }}
+            </p>
+        </div>
+    </article>
+
+    <!-- Lightbox -->
+    <div class="lightbox" *ngIf="isLightboxOpen" (click)="closeLightbox()">
+        <div class="lightbox__content" (click)="$event.stopPropagation()">
+            <button class="lightbox__close" (click)="closeLightbox()">&times;</button>
+
+            <div class="lightbox__image-container">
+                <img [src]="imagenes && imagenes.length ? imagenes[currentIndex] : 'assets/img/default.png'"
+                    [alt]="titulo">
+            </div>
+
+            <div class="lightbox__controls" *ngIf="imagenes && imagenes.length > 1">
+                <button class="lightbox__nav lightbox__nav--prev" (click)="prevImage($event)">&lt;</button>
+                <button class="lightbox__nav lightbox__nav--next" (click)="nextImage($event)">&gt;</button>
+            </div>
+
+            <div class="lightbox__counter" *ngIf="imagenes && imagenes.length > 1">
+                {{ currentIndex + 1 }} / {{ imagenes.length }}
+            </div>
+        </div>
+    </div>
+</div>

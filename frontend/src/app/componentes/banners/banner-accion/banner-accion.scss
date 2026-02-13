@@ -10,8 +10,10 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
-    margin: 20px 0;
-    width: 100%;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+    /* Align with standard page content width */
     box-sizing: border-box;
 
     h2 {

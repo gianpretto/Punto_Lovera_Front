@@ -1,1 +1,78 @@
-<p>panel-usuario works!</p>
+<div class="perfil-wrapper">
+
+    <!-- Header Section with User Info -->
+    <div class="user-header">
+        <div class="user-info-container">
+
+            <!-- Avatar -->
+            <div class="user-avatar">
+                <img *ngIf="avatarUrl" [src]="avatarUrl" alt="Avatar" class="avatar-image">
+                <div *ngIf="!avatarUrl" class="avatar-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#ccc">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- User Details -->
+            <div class="user-details">
+                <h1 class="user-name">{{ userName }}</h1>
+                <p class="user-phone">Teléfono: {{ userPhone || 'Sin cargar' }}</p>
+            </div>
+
+            <!-- Extra Info Columns (Dynamic) -->
+            <div class="user-extra">
+                <div class="extra-column">
+                    <p class="extra-title">Datos de facturación</p>
+                    <p class="extra-data" *ngIf="userDni">DNI: {{ userDni }}</p>
+                    <p class="extra-data" *ngIf="userAddress">{{ userAddress }}</p>
+                    <p class="extra-data" *ngIf="userCity">{{ userCity }}</p>
+                    <p class="extra-data" *ngIf="!userDni && !userAddress">Sin datos cargados</p>
+                </div>
+
+                <div class="extra-actions">
+                    <a routerLink="/datos" class="edit-profile-link">Editar perfil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credit Banner -->
+    <div class="credit-banner">
+        <h2 class="credit-title">Crédito disponible</h2>
+        <div class="credit-amount">$ {{ creditoDisponible | number:'1.0-0' }}</div>
+        <a routerLink="/creditos" class="btn-cargar-credito">Cargar créditos</a>
+    </div>
+
+    <!-- Purchases Table -->
+    <div class="purchases-section">
+        <h3 class="section-title">Mis Compras</h3>
+
+        <div class="table-responsive">
+            <table class="purchases-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Referencia</th>
+                        <th>Fecha</th>
+                        <th>Descripción</th>
+                        <th>Valor unitario</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let compra of misCompras; let i = index">
+                        <td>{{ compra.id }}</td>
+                        <td>{{ compra.referencia }}</td>
+                        <td>{{ compra.fecha }}</td>
+                        <td>{{ compra.descripcion }}</td>
+                        <td>{{ compra.valorUnitario | currency:'ARS':'symbol':'1.0-0' }}</td>
+                        <td><strong>{{ compra.valorTotal | currency:'ARS':'symbol':'1.0-0' }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

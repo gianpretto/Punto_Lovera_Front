@@ -1,48 +1,11 @@
 <!-- HERO PRINCIPAL -->
-<app-hero
-  titulo="TITULAR PRINCIPAL"
-  detalle="detalle"
-  subtitulo="Sub-texto con alguna info breve que explique rápidamente de qué va la plataforma."
-  textoBoton="Botón"
-  [linkBoton]="['/subastas']"
-  imagenUrl="/images/hero-placeholder.jpg"
-></app-hero>
+<app-hero titulo="TITULAR PRINCIPAL" detalle="detalle"
+  subtitulo="Sub-texto con alguna info breve que explique rápidamente de qué va la plataforma." textoBoton="Botón"
+  [linkBoton]="['/subastas']" imagenUrl="/images/hero-placeholder.jpg"></app-hero>
 
 <!-- SUBASTA ACTIVA -->
-<section class="subasta-activa">
-  <div class="subasta-activa__inner">
-    <p class="subasta-activa__eyebrow">SUBASTA ACTIVA • EN VIVO</p>
-
-    <article class="subasta-card">
-      <div class="subasta-card__media">
-        <span class="pill pill--activa"> ACTIVA</span>
-        <span class="subasta-card__en-vivo">• EN VIVO</span>
-
-        <div class="subasta-card__placeholder" aria-hidden="true">
-          <span class="ph-icon"></span>
-        </div>
-      </div>
-
-      <div class="subasta-card__info">
-        <h3 class="subasta-card__titulo">Heladería con elaboración<br>máquinas chupetonas</h3>
-
-        <div class="subasta-card__ubicacion">
-          <span class="pin"></span>
-          <span>Castelar, Buenos Aires.</span>
-        </div>
-
-        <hr class="subasta-card__divider">
-
-        <p class="subasta-card__desc">
-          Alguna información relevante o interesante para detallar en un muy breve texto descriptivo,
-          que no dure más que esto.
-        </p>
-
-        <button class="btn-negro">Unirse a la sesión →</button>
-      </div>
-    </article>
-  </div>
-</section>
+<!-- SUBASTA ACTIVA -->
+<app-subasta-en-vivo></app-subasta-en-vivo>
 
 <!-- PRÓXIMAS SUBASTAS -->
 <section class="prox">
@@ -50,18 +13,11 @@
     <h2 class="prox__titulo">PRÓXIMAS SUBASTAS</h2>
 
     <div class="prox__grid">
-      <app-tarjeta-subasta
-        *ngFor="let subasta of proximasSubastas"
-        [estado]="subasta.estado"
-        [titulo]="subasta.titulo"
-        [ubicacion]="subasta.ubicacion"
-        [descripcion]="subasta.descripcion"
-        [fecha]="subasta.fecha"
-        [hora]="subasta.hora"
-        [mostrarCuentaRegresiva]="true"
-        [countdown]="subasta.countdown">
+      <app-tarjeta-subasta *ngFor="let subasta of proximasSubastas" [id]="subasta.id" [estado]="subasta.estado"
+        [titulo]="subasta.titulo" [ubicacion]="subasta.ubicacion" [descripcion]="subasta.descripcion"
+        [fecha]="subasta.fecha" [hora]="subasta.hora" [mostrarCuentaRegresiva]="true" [countdown]="subasta.countdown">
       </app-tarjeta-subasta>
-    </div> 
+    </div>
 
     <div class="prox__cta">
       <button class="btn-negro">Ver más subastas →</button>
@@ -74,12 +30,12 @@
 <!-- QUIERO COMPRAR / QUIERO VENDER -->
 <section class="cta-doble">
   <div class="cta-doble__inner">
-    <a class="cta-card" href="#" aria-label="Quiero comprar">
+    <a class="cta-card" [routerLink]="['/quiero-comprar']" aria-label="Quiero comprar">
       <h3 class="cta-card__titulo">QUIERO COMPRAR</h3>
       <div class="cta-card__img" aria-hidden="true"></div>
     </a>
 
-    <a class="cta-card" href="#" aria-label="Quiero vender">
+    <a class="cta-card" [routerLink]="['/quiero-vender']" aria-label="Quiero vender">
       <h3 class="cta-card__titulo">QUIERO VENDER</h3>
       <div class="cta-card__img" aria-hidden="true"></div>
     </a>
@@ -111,28 +67,8 @@
 
 
 <!-- SUBASTAS ANTERIORES -->
-<section class="prox ant">
-  <div class="prox__inner">
-    <h2 class="prox__titulo">SUBASTAS ANTERIORES</h2>
-
-    <div class="prox__grid">
-      <app-tarjeta-subasta
-        *ngFor="let item of subastasAnteriores"
-        [estado]="'FINALIZADA'"
-        [titulo]="item.titulo"
-        [ubicacion]="item.ubicacion"
-        [descripcion]="item.descripcion"
-        [fecha]="item.fecha"
-        [hora]="item.hora"
-        [mostrarCuentaRegresiva]="false">
-      </app-tarjeta-subasta>
-    </div>
-
-    <div class="prox__cta">
-      <button class="btn-negro">Ver más subastas →</button>
-    </div>
-  </div>
-</section>
+<!-- SUBASTAS ANTERIORES -->
+<app-subastas-anteriores></app-subastas-anteriores>
 
 
 <!-- CONFÍAN EN NOSOTROS-->
@@ -155,11 +91,7 @@
     <h2 class="faq__titulo">PREGUNTAS FRECUENTES</h2>
 
     <div class="faq__lista">
-      <div
-        class="faq__item"
-        *ngFor="let f of faqs; let i = index"
-        [class.activa]="f.abierta"
-      >
+      <div class="faq__item" *ngFor="let f of faqs; let i = index" [class.activa]="f.abierta">
         <button class="faq__pregunta" (click)="toggleFaq(i)">
           <span>{{ i + 1 }}. {{ f.pregunta }}</span>
           <span class="faq__icono">+</span>
@@ -172,7 +104,3 @@
     </div>
   </div>
 </section>
-
-
-
-

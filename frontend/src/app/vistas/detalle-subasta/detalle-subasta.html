@@ -1,1 +1,31 @@
-<p>detalle-subasta works!</p>
+<div class="detalle-subasta-page">
+    <!-- Header of the Auction/Profile -->
+    <header class="subasta-header">
+        <div class="header-inner">
+            <h1 class="subasta-titulo">{{ subastaInfo.titulo }}</h1>
+
+            <div class="subasta-meta">
+                <span>📍 {{ subastaInfo.ubicacion }}</span>
+                <span>📅 {{ subastaInfo.fecha }}</span>
+                <span>🕒 {{ subastaInfo.hora }}</span>
+            </div>
+
+            <p class="subasta-desc">
+                {{ subastaInfo.descripcion }}
+            </p>
+        </div>
+    </header>
+
+    <!-- Lots / Products Catalog -->
+    <section class="catalogo-section">
+        <div class="catalogo-inner">
+            <h2 class="section-title">Lotes disponibles</h2>
+
+            <div class="catalogo-grid">
+                <app-tarjeta-producto-catalogo *ngFor="let lote of lotes" [lote]="lote.lote" [titulo]="lote.titulo"
+                    [descripcion]="lote.descripcion" [imagenes]="lote.imagenes">
+                </app-tarjeta-producto-catalogo>
+            </div>
+        </div>
+    </section>
+</div>

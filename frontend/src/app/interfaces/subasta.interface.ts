@@ -6,6 +6,7 @@ export interface Countdown {
 }
 
 export interface Subasta {
+  id?: string | number;
   estado?: string;
   titulo: string;
   ubicacion: string;

@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.vender-page {
+    background: #fdfdfd;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 80px;
+}
+
+/* Common inner container */
+.reasons-inner,
+.explanation-inner,
+.steps-inner {
+    width: min(1200px, calc(100% - 64px));
+    margin: 0 auto;
+}
+
+/* REASONS SECTION */
+.reasons-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 60px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+.reason-card {
+    background: #f0f0f0;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        background: #ccc;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            opacity: 0.5;
+        }
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #222;
+    }
+
+    .card-desc {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #666;
+    }
+}
+
+/* EXPLANATION SECTION */
+.explanation-section {
+    padding: 100px 0;
+    background: linear-gradient(to right, #e0e0e0 0%, #a0a0a0 100%);
+    /* Simulating the gradient/darker background */
+    color: #333;
+
+    .explanation-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+        }
+    }
+
+    .explanation-content {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .explanation-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: #111;
+    }
+
+    .explanation-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .explanation-media {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+            width: 100px;
+            /* Small square placeholder as per design */
+            height: 100px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+        }
+    }
+}
+
+/* STEPS SECTION */
+.steps-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 80px;
+
+    /* Alternate order manually via logic if needed, but design shows text left, image right consistently */
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+}
+
+.step-content {
+    flex: 1;
+
+    .step-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #333;
+        text-transform: lowercase;
+        /* as seen in image 'paso 1' */
+    }
+
+    .step-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+    }
+}
+
+.step-media {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 16/9;
+        background: #ddd;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+}

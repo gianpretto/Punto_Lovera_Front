@@ -1,5 +1,5 @@
 <div class="tarjeta-subasta">
-  <article class="sub-card">
+  <article class="sub-card" [routerLink]="['/subastas', id]">
     <div class="sub-card__media">
       <span class="pill" [ngClass]="{ 'pill--activa': estado === 'ACTIVA' }">
         {{ estado }}

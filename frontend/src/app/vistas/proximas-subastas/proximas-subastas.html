@@ -1,1 +1,38 @@
-<p>proximas-subastas works!</p>
+<!-- SUBASTA ACTIVA / EN VIVO -->
+<app-subasta-en-vivo></app-subasta-en-vivo>
+
+<!-- PRÓXIMAS SUBASTAS GRID -->
+<section class="prox">
+    <div class="prox__inner">
+        <h2 class="prox__titulo" id="titulo-proximas">PRÓXIMAS SUBASTAS</h2>
+
+        <div class="prox__grid">
+            <app-tarjeta-subasta *ngFor="let subasta of paginatedSubastas" [id]="subasta.id" [estado]="subasta.estado"
+                [titulo]="subasta.titulo" [ubicacion]="subasta.ubicacion" [descripcion]="subasta.descripcion"
+                [fecha]="subasta.fecha" [hora]="subasta.hora" [mostrarCuentaRegresiva]="true"
+                [countdown]="subasta.countdown">
+            </app-tarjeta-subasta>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-wrapper" *ngIf="totalPages > 1">
+            <div class="pagination">
+                <button *ngFor="let p of visiblePages" class="pagination__page" [class.active]="p === currentPage"
+                    [class.disabled-dots]="p === '...'" (click)="setPage(p)">
+                    {{ p }}
+                </button>
+
+                <button class="pagination__next" (click)="nextPage()" [disabled]="currentPage === totalPages"
+                    [class.disabled]="currentPage === totalPages">
+                    Siguiente →
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REDES SOCIALES -->
+<app-redes></app-redes>
+
+<!-- SUBASTAS ANTERIORES -->
+<app-subastas-anteriores></app-subastas-anteriores>

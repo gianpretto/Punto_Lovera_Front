@@ -1,1 +1,100 @@
-<p>datos-usuario works!</p>
+<div class="edit-wrapper">
+    <h1 class="edit-title">Cargá tus datos</h1>
+
+    <div class="avatar-container" (click)="fileInput.click()">
+        <div class="avatar-circle">
+            <!-- If no avatarUrl, show icon -->
+            <ng-container *ngIf="!avatarUrl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="#ccc">
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+            </ng-container>
+            <!-- If avatarUrl exists, show image -->
+            <img *ngIf="avatarUrl" [src]="avatarUrl" alt="Avatar" class="avatar-image">
+        </div>
+        <div class="camera-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path
+                    d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+            </svg>
+        </div>
+        <!-- Hidden File Input -->
+        <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+    </div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="edit-form">
+
+        <!-- Name & Surname -->
+        <div class="form-row">
+            <div class="form-group half">
+                <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre"
+                    [ngClass]="{ 'is-invalid': (submitted || f['nombre'].touched) && f['nombre'].errors }" />
+            </div>
+            <div class="form-group half">
+                <input type="text" formControlName="apellido" class="form-control" placeholder="Apellido"
+                    [ngClass]="{ 'is-invalid': (submitted || f['apellido'].touched) && f['apellido'].errors }" />
+            </div>
+        </div>
+
+        <!-- Phone & Identity -->
+        <div class="form-row">
+            <div class="form-group half">
+                <input type="tel" formControlName="telefono" class="form-control" placeholder="Teléfono"
+                    (keypress)="onlyNumbers($event)"
+                    [ngClass]="{ 'is-invalid': (submitted || f['telefono'].touched) && f['telefono'].errors }" />
+            </div>
+            <div class="form-group half">
+                <input type="text" formControlName="dni" class="form-control" placeholder="DNI / CUIT"
+                    (keypress)="onlyNumbers($event)"
+                    [ngClass]="{ 'is-invalid': (submitted || f['dni'].touched) && f['dni'].errors }" />
+            </div>
+        </div>
+
+        <!-- Birth Date -->
+        <div class="form-row">
+            <div class="form-group full">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input type="date" formControlName="fechaNacimiento" class="form-control"
+                    [ngClass]="{ 'is-invalid': (submitted || f['fechaNacimiento'].touched) && f['fechaNacimiento'].errors }" />
+            </div>
+        </div>
+
+        <!-- Address & City -->
+        <div class="form-row">
+            <div class="form-group full">
+                <input type="text" formControlName="direccion" class="form-control"
+                    placeholder="Dirección (Calle, altura, piso)"
+                    [ngClass]="{ 'is-invalid': (submitted || f['direccion'].touched) && f['direccion'].errors }" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group half">
+                <input type="text" formControlName="ciudad" class="form-control" placeholder="Ciudad"
+                    [ngClass]="{ 'is-invalid': (submitted || f['ciudad'].touched) && f['ciudad'].errors }" />
+            </div>
+            <div class="form-group half">
+                <input type="text" formControlName="cp" class="form-control" placeholder="Código Postal"
+                    [ngClass]="{ 'is-invalid': (submitted || f['cp'].touched) && f['cp'].errors }" />
+            </div>
+        </div>
+
+        <!-- Province -->
+        <div class="form-row">
+            <div class="form-group full">
+                <input type="text" formControlName="provincia" class="form-control" placeholder="Provincia"
+                    [ngClass]="{ 'is-invalid': (submitted || f['provincia'].touched) && f['provincia'].errors }" />
+            </div>
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+        </div>
+
+        <button type="submit" class="btn btn-black" [disabled]="profileForm.pristine || profileForm.invalid">
+            Guardar cambios
+        </button>
+
+    </form>
+</div>

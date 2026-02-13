@@ -1,10 +1,10 @@
 /*CONTACTO*/
-.contacto{
+.contacto {
   margin-top: 140px;
   background: #fff;
 }
 
-.contacto__inner{
+.contacto__inner {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -12,18 +12,20 @@
 }
 
 /* Panel izquierdo */
-.contacto__panel{
+.contacto__panel {
   background: #4e4a4a;
   padding: 110px 100px 110px 140px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
 }
-.contacto__eyebrow{
+
+.contacto__eyebrow {
   margin-left: 100px;
 }
-.contacto__titulo{
+
+.contacto__titulo {
   margin: 0 0 60px;
   color: #fff;
   font-size: 26px;
@@ -32,174 +34,184 @@
   text-transform: uppercase;
 }
 
-.contacto__form{
+.contacto__form {
   display: grid;
   gap: 18px;
   max-width: 520px;
 }
 
 .contacto__input,
-.contacto__textarea{
+.contacto__textarea {
   width: 100%;
   background: transparent;
-  border: 1px solid rgba(255,255,255,.7);
+  border: 1px solid rgba(255, 255, 255, .7);
   color: #fff;
   padding: 16px 18px;
   font-size: 18px;
   outline: none;
 }
 
-.contacto__textarea{
+.contacto__textarea {
   resize: none;
   padding-top: 18px;
 }
 
 .contacto__input::placeholder,
-.contacto__textarea::placeholder{
-  color: rgba(255,255,255,.85);
+.contacto__textarea::placeholder {
+  color: rgba(255, 255, 255, .85);
 }
 
-.btn-negro--full{
+.btn-negro--full {
   width: 107.5%;
   min-height: 54px;
 }
 
 /* Panel derecho */
-.contacto__media{
+.contacto__media {
   background: #8f8f8f;
   position: relative;
 }
 
-.contacto__img{
+.contacto__img {
   position: absolute;
   inset: 0;
   opacity: .55;
   background:
-    radial-gradient(circle at 50% 50%, rgba(0,0,0,.35) 0 46px, transparent 47px),
-    linear-gradient(135deg, rgba(0,0,0,.16), rgba(0,0,0,.02));
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .35) 0 46px, transparent 47px),
+    linear-gradient(135deg, rgba(0, 0, 0, .16), rgba(0, 0, 0, .02));
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .contacto__inner{
+/* Responsive Contacto */
+@media (max-width: 900px) {
+  .contacto__inner {
     grid-template-columns: 1fr;
   }
-  .contacto__panel{
+
+  .contacto__panel {
     padding: 70px 26px;
   }
-  .contacto__media{
+
+  .contacto__media {
     min-height: 260px;
   }
 }
-.footer{
+
+/* FOOTER */
+.footer {
   background: #111;
   color: #fff;
 }
 
-
-.footer__inner{
+.footer__inner {
   width: min(1240px, calc(100% - 64px));
   margin: 0 auto;
   padding: 90px 0 40px;
 
+  /* Desktop Grid Layout */
   display: grid;
   grid-template-columns: 1.2fr 1fr 1.2fr;
+  grid-template-areas:
+    "logo links social"
+    ".... links mail"
+    "loc  links badges";
   gap: 40px;
   align-items: start;
 }
 
-.footer__brand{
-    display: grid;
-    justify-content: start;
-    gap: 18px;
+/* GRID AREAS & STYLES */
+
+.footer__logo {
+  grid-area: logo;
+
+  img {
+    height: 22px;
+    width: auto;
+    display: block;
+    color: #fff;
+  }
 }
 
-.footer__logo img{
-  height: 22px;
-  width: auto;
-  display: block;
-  color: #fff;
-}
-
-.footer__ubicacion{
-  margin: 240px 0 0;
+.footer__ubicacion {
+  grid-area: loc;
+  margin: 20px 0 0;
+  /* logic from original margin-top approx */
   font-size: 14px;
   line-height: 1.6;
   opacity: .9;
+  align-self: end;
+  /* push to bottom of grid area if needed */
 }
 
-/* Links */
-.footer__links{
-  display: grid;
+.footer__links {
+  grid-area: links;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
-  justify-content: start;
+  align-items: flex-start;
 }
 
-.footer__links a{
+.footer__links a {
   color: #fff;
   text-decoration: none;
   font-size: 18px;
   opacity: .95;
 }
 
-.footer__links a:hover{
+.footer__links a:hover {
   text-decoration: underline;
 }
 
-.nav__link_qv{
-  margin-top:26px;  
-  font-weight: 700;
-}
-.footer__cta{
+.nav__link_qv {
   margin-top: 26px;
   font-weight: 700;
 }
 
-/* Right */
-.footer__right{
-  margin-left: auto;  
-  display: grid;
-  justify-items: center;
-  gap: 26px;
-}
-
-.footer__social{
+.footer__social {
+  grid-area: social;
+  justify-self: end;
   display: flex;
   gap: 40px;
-}
-.footer__social img{
-  height: 29px;
-  width: auto;
-  object-fit: contain;
+
+  img {
+    height: 29px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
 }
 
-.footer__mail{
+.footer__mail {
+  grid-area: mail;
+  justify-self: end;
   color: #fff;
   text-decoration: none;
   font-size: 16px;
   opacity: .95;
 }
 
-.footer__mail:hover{
+.footer__mail:hover {
   text-decoration: underline;
 }
 
-.footer__badges{
-  margin-top: 160px;
+.footer__badges {
+  grid-area: badges;
+  justify-self: end;
+  margin-top: auto;
+  /* Push to bottom */
   display: flex;
   gap: 28px;
   align-items: center;
- 
-}
 
-.footer__badges img{
-  height: 60px;
-  width: auto;
-  object-fit: contain;
+  img {
+    height: 60px;
+    /* kept large per original */
+    width: auto;
+    object-fit: contain;
+  }
 }
 
 /* Bottom bar */
-.footer__bottom{
+.footer__bottom {
   background: #bdbdbd;
   color: #111;
   text-align: center;
@@ -213,32 +225,94 @@
   border: none;
   padding: 12px 80px;
   border-radius: 0;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
   cursor: pointer;
   font-size: 18px;
   margin-top: 2.5rem;
 }
+
 .btn-negro:hover {
   filter: brightness(1.05);
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .footer__inner{
-    grid-template-columns: 1fr;
+/* Tablet Responsive (max-width: 900px) */
+@media (max-width: 900px) {
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
     gap: 34px;
     padding: 54px 0 30px;
   }
 
-  .footer__links{
-    justify-content: start;
+  /* Reset alignment for tablet stack */
+  .footer__social,
+  .footer__mail,
+  .footer__badges {
+    justify-self: start;
+    /* Flex items usually stretch or start */
+    align-self: flex-start;
+    /* reset from grid logic */
   }
 
-  .footer__right{
-    justify-items: start;
+  .footer__logo {
+    margin-bottom: 10px;
   }
 
-  .footer__ubicacion{
-    margin-top: 26px;
+  .footer__ubicacion {
+    margin-top: 10px;
+  }
+}
+
+/* Mobile/Tablet Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+  .footer__inner {
+    align-items: center;
+    /* Center everything */
+    text-align: center;
+    gap: 30px;
+  }
+
+  /* ORDER RE-ARRANGEMENT */
+  .footer__logo {
+    order: 1;
+  }
+
+  .footer__social {
+    order: 2;
+    align-self: center;
+    /* Center flex item */
+    gap: 30px;
+    /* Reduced gap for mobile */
+  }
+
+  .footer__mail {
+    order: 3;
+    align-self: center;
+  }
+
+  .footer__links {
+    order: 4;
+    align-items: center;
+    /* Center links list */
+    width: 100%;
+  }
+
+  .footer__badges {
+    order: 5;
+    margin-top: 20px;
+    align-self: center;
+    gap: 20px;
+
+    img {
+      height: 50px;
+    }
+
+    /* Slightly smaller badges */
+  }
+
+  .footer__ubicacion {
+    order: 6;
+    margin-top: 20px;
+    align-self: center;
   }
 }

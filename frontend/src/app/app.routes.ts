@@ -12,6 +12,8 @@ import { Registro } from './vistas/registro/registro';
 import { DatosUsuario } from './vistas/datos-usuario/datos-usuario';
 import { PanelUsuario } from './vistas/panel-usuario/panel-usuario';
 import { Creditos } from './vistas/creditos/creditos';
+import { ComprobanteExitoso } from './vistas/comprobante-exitoso/comprobante-exitoso';
+import { Reintegro } from './vistas/reintegro/reintegro';
 
 // Institucional / informativas
 import { QuienesSomos } from './vistas/quienes-somos/quienes-somos';
@@ -32,10 +34,14 @@ export const routes: Routes = [
 
   // Autenticación / usuario
   { path: 'login', component: Login },
+  { path: 'forgot-password', loadComponent: () => import('./vistas/forgot-password/forgot-password').then(m => m.ForgotPassword) },
   { path: 'registro', component: Registro },
+  { path: 'validar-mail', loadComponent: () => import('./vistas/validar-mail/validar-mail').then(m => m.ValidarMail) },
   { path: 'datos', component: DatosUsuario },
   { path: 'perfil', component: PanelUsuario },
   { path: 'creditos', component: Creditos },
+  { path: 'comprobante-exitoso', component: ComprobanteExitoso },
+  { path: 'reintegro', component: Reintegro },
 
   // Institucional
   { path: 'quienes-somos', component: QuienesSomos },
